@@ -1,11 +1,6 @@
 import Link from 'next/link'
 import Header from '../../components/Header'
-
-const courses = [
-  { slug: 'quran-reading', title: "Qur'an Reading & Memorization", level: 'Beginner', teacher: 'Ustadh Bilal' },
-  { slug: 'tajweed', title: 'Tajweed', level: 'Intermediate', teacher: 'Ustadh Ali' },
-  { slug: 'arabic-language', title: 'Arabic Language', level: 'Beginner', teacher: 'Ustadh Sara' }
-]
+import { COURSES } from '../../lib/data'
 
 export default function Courses({ setLang, lang }: any) {
   return (
@@ -13,7 +8,7 @@ export default function Courses({ setLang, lang }: any) {
       <Header setLang={setLang} lang={lang} />
       <h2 className="text-xl font-semibold">Courses</h2>
       <div className="mt-3 space-y-3">
-        {courses.map(c => (
+        {COURSES.map(c => (
           <Link key={c.slug} href={`/courses/${c.slug}`}>
             <a className="block p-3 border rounded-lg">
               <div className="flex justify-between">

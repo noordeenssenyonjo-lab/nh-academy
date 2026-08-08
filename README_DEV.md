@@ -1,6 +1,3 @@
-Updated: Added authentication pages, dashboards, groups, schedule, admin setup, and basic helpers.
+Updated courses list and added static course data, sitemap, manifest, and robots.txt to support PWA and SEO. Added lib/data.ts as a single source of truth for courses & groups so pages can be populated consistently.
 
-Next steps after this commit:
-- Wire Firebase in .env.local to enable auth and Firestore.
-- Provide branding assets (logo, fonts, colors) to finalize the design.
-- I will proceed to add course detail pages for all 6 courses and implement join-group functionality.
+Next: implement Firebase wiring (auth & Firestore persistence) when you provide config or confirm to wire now. Also will proceed to polish design and add Uganda-specific localization once you confirm assets.
