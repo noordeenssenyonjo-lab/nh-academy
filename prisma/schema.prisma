@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  fullName  String
+  email     String   @unique
+  phone     String?
+  language  String   @default("en")
+  role      Role     @default(STUDENT)
+  password  String
+  createdAt DateTime @default(now())
+  enrollments Enrollment[]
+}
+
+model Course {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  description String
+  level       String
+  teacher     String
+  schedule    String
+  duration    String
+  lessons     Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model ReadingGroup {
+  id        Int      @id @default(autoincrement())
+  name      String
+  arabic    String
+  level     String
+  description String
+  schedule  String
+  learners  Int      @default(0)
+}
+
+model Enrollment {
+  id       Int @id @default(autoincrement())
+  user     User @relation(fields: [userId], references: [id])
+  userId   Int
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId Int
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  STUDENT
+  TEACHER
+  ADMIN
+}
